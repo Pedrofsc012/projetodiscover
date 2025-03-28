@@ -1,0 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*Variaveis para o css*/
+/*var() é a função para chamar a variavel*/
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(255, 255, 255, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.2);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+/*display: none; == ocultar um elemento da página
+margin == é o espaço entre um elemento e seus vizinhos
+padding == é o espaço entre o conteúdo do elemento e sua borda*/
+
+body {
+  /*background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover; */
+
+  /* background: color image repeat position/size */
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+/* (*) padrao universal para marcar todos no html*/
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  margin: 56px auto 0px;
+  /*margin: top, right, bottom, left;
+  se margin: 56px auto;
+  o primeiro aplica emcima e embaixo e o segundo a direita e esquerda
+  Se margin: 56px auto 0px; o do meio aplica os lados e o utimo o bottom e o primeiro o top
+  para alinhar a caixa no meio com largura fixa
+  margin: auto;
+  */
+
+  padding: 0 24px;
+}
+
+/*Profile
+Todo os elementos inline aceita que o pai dele defina algumas propriedades*/
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+/* a altura(height) ela geralmente  segue o tamanho do conteudo de dentro da caixa*/
+#profile img {
+  /*em elementos inline não é possivel aplicar a margin: auto;
+  elementos block ocupam a largura da tela a que é definida, 
+  ja em inline ocupam somente seu espaço ficando na mesma linha*/
+  width: 112px;
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/*Switch*/
+#switch {
+  position: relative;
+  /*o position relative faz com que o position absolute fique relativo no espaço definido por*/
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border-radius: 50%;
+  border: 0;
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  backdrop-filter: blur(4px);
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 9999px;
+}
+
+/*por padrão 
+display block =colocar  os elementos ficam abaixo do outro
+display inline = ficam um do lado do outro
+
+position absolute faz o elementos ficarem em camadas
+*/
+
+/*Links*/
+ul {
+  list-style: none;
+  display: flex;
+  /*por padrão o "display flex" ja vem como flex-direction: row;.*/
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 24px 0;
+}
+
+ul li a {
+  /*Não faz sentindo no a
+  gap: 8px poruque no a so existe um conteuno e nao tem como fazer espaçamento com apenas um conteudo*/
+  display: flex;
+  /* cria uma linha(main) virtual que passa no meio do elemento*/
+  align-items: center;
+  /*aling-items: center; alinha os itens do elemento no meio da linha do display flex*/
+  justify-content: center;
+  /*o justify-content: center; alinha o elemento no meio da pagina*/
+  padding: 16px 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  /*aredonda as bordas do border*/
+  border-radius: 8px;
+
+  /*can i use site para procurar oque posso usar no css para determinados navegadores*/
+  backdrop-filter: blur(4px);
+
+  /*correção do texto dentro dos links*/
+  text-decoration: none;
+  font-weight: bold;
+
+  transition: background 0.5s;
+}
+
+/*pseldo-selector*/
+/*:hover muda as propriedades do elemento quando passamos o mouse em cima*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+#social-links {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+  font-size: 24px;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+  text-decoration: none;
+}
+
+#social-links a:hover {
+  background-color: var(--highlight-color);
+}
+
+footer {
+  text-align: center;
+  padding: 24px 0;
+  font-size: 14px;
+}
