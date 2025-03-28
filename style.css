@@ -103,11 +103,15 @@ Todo os elementos inline aceita que o pai dele defina algumas propriedades*/
   left: 0;
   z-index: 1;
   transform: translateY(-50%);
+  animation: slide-out 0.2s;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.2s forwards;
 }
 
 #switch span {
@@ -197,11 +201,32 @@ footer {
   font-size: 14px;
 }
 /*media queries */
-@media (min-width: 700px){ 
+@media (min-width: 700px) {
   :root {
-    --bg-url: url(./assets/bg-desktop.jpg)
+    --bg-url: url(./assets/bg-desktop.jpg);
   }
-  .light{
-    --bg-url: url(./assets/bg-desktop-light.jpg)
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+/* at rule Animações*/
+@keyframes slide-in {
+  /*quando começa*/
+  from {
+    left: 0;
+  }
+  /*quando termina*/
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
